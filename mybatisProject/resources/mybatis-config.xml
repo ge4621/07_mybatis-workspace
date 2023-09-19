@@ -15,7 +15,7 @@
   		
   	</typeAliases>
   	
-  	<!-- environment : mybatis에서 연동알 DB 정보들을 등록하는 영역 -->
+  	<!-- environment : mybatis에서 연동할 DB 정보들을 등록하는 영역 -->
   	<environments default="default가 될 id값 입력">
   		<environment id="">
   		<!-- 
