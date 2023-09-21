@@ -35,7 +35,7 @@ public class MemberDao {
 		 * 결과 = sqlSession.sql문 종류에 맞는 메소드("매퍼의 별칭.해당 sql문의 고유한 id",[그 sql문을 완성시킬 객체])
 		 */
 		
-		int result = sqlSession.insert("memberMapper.insertMember", m);
+		int result = sqlSession.insert("memberMapper.insertMember", m);  //"member-mapper에서 namespace의 id값.쿼리문의 id값"
 		return result;
 		
 		//return sqlSession.insert("memberMapper.insertMember", m); //위 두줄을 한줄로 표현할 경우

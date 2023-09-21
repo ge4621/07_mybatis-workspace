@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		if(result > 0) {
 			sqlSession.commit();
-		} //자동 커밋을 안하게 설정 했기 때문에 commit만 쓰면 된다.
+		} //자동 커밋을 안하게 설정 했기 때문에 commit만 쓰면 된다. 자동으로 커밋이 안되기 때문에 해당 구문이 없으면 무조건 커밋 불가
 		
 		sqlSession.close();
 		return result;

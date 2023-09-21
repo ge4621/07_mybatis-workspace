@@ -30,9 +30,9 @@ public class MemberInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8"); //인코딩 필수 
 		
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userId"); //괄호안에 있는 값은 jsp에서의 name 값과 일치해야 한다.
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
@@ -41,7 +41,7 @@ public class MemberInsertController extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		
-		Member m = new Member(userId, userPwd, userName, email, birthday, gender, phone, address);
+		Member m = new Member(userId, userPwd, userName, email, birthday, gender, phone, address);//매개 변수 생성자 만들기 -> vo 조정 필요
 		
 		int result = new MemberServiceImpl().insertMember(m);
 		
