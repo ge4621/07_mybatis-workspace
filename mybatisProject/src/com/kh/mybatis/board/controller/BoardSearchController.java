@@ -2,6 +2,7 @@ package com.kh.mybatis.board.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +16,16 @@ import com.kh.mybatis.common.model.vo.PageInfo;
 import com.kh.mybatis.common.template.Pagination;
 
 /**
- * Servlet implementation class BoardListController
+ * Servlet implementation class BoardSearchController
  */
-@WebServlet("/list.bo")
-public class BoardListController extends HttpServlet {
+@WebServlet("/search.bo")
+public class BoardSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListController() {
+    public BoardSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,23 +35,29 @@ public class BoardListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//-----------페이징 처리-----------------
+		String condition = request.getParameter("condition"); //"writer" | "title" | "content"
+		String keyword = request.getParameter("keyword"); //"사용자가 입력한 키워드 값"
 		
-		int listCount = new BoardServiceImpl().selectListCount(); //현재 총 게시글 개수
-		int currentPage = Integer.parseInt(request.getParameter("cpage")); //현재 페이지(즉, 사용자가 요청한 페이지)
+		HashMap<String,String> map = new HashMap<>();
+		map.put("condition", condition);
+		map.put("keyword", keyword);
 		
-	
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
+		BoardServiceImpl bService = new BoardServiceImpl();
+		
+		int searchCount = bService.selectSearchCount(map);//현재 검색 결과에 맞는 게시글 총 개수
+		int currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		PageInfo pi = Pagination.getPageInfo(searchCount, currentPage, 10, 5);
 		
 		//System.out.println(pi);
 		
-		//게시글
-		ArrayList<Board> list = new BoardServiceImpl().selectList(pi);
+		ArrayList<Board> list = bService.selectSearchList(map, pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("WEB-INF/views/board/boardListView.jsp").forward(request, response);
+		
 		
 	}
 

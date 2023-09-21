@@ -11,7 +11,7 @@
   		< insert | update | delete id="각 sql문 식별자" [parameterType="전달받을 자바타입(풀클래스명)|별칭"]>
   		
   		</ insert | update | delete >
-  		//DML문 같은 경우 어짜피 실행 결과가 처리된 행수(int)이기 때문에 resultType 또는 resultMap에 대한 속성 필요 없음
+  		//DML문 같은 경우 어짜피 실행 결과가 처리된 행수(int)이기 때문에 resultType(자료형 하나일때) 또는 resultMap에 대한 속성 필요 없음
   		
   		* SELECT문 일 경우
   		<select id="각 sql문 식별자" [parameterType="전달받을 자바타입(풀클래스명)|별칭"] resultType="조회결과를 반환하고자 하는 자바 타입(int, String..)" | resultMap="조회결과를 뽑아서 매핑할 resultMap">

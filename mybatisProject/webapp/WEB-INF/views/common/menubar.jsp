@@ -35,7 +35,7 @@
 
 	.outer{
 		width: 900px;
-		height: 450px;
+		height: 600px;
 		background-color: black;
 		color: white;
 		margin: auto;
