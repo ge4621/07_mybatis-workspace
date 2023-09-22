@@ -62,7 +62,11 @@
 	            </tr>
             </c:forEach>
         </table>
-        <br><br>
+        <br>
+        <c:if test="${ not empty loginMember && loginMember.userId eq b.boardWriter }">
+        	<a href="delete.bo?bno=${b.boardNo}">삭제하기</a>
+        </c:if>
+        <br>
     </div>
 
 </body>

@@ -30,7 +30,6 @@ public class MemberInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8"); //인코딩 필수 
 		
 		String userId = request.getParameter("userId"); //괄호안에 있는 값은 jsp에서의 name 값과 일치해야 한다.
 		String userPwd = request.getParameter("userPwd");

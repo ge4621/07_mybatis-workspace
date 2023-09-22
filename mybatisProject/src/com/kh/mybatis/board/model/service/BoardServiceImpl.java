@@ -101,4 +101,19 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	//게시글 삭제
+	public int deleteList(int boardNo) {
+		
+		SqlSession sqlSession = getSqlSession();
+		int result = bDao.deleteList(sqlSession,boardNo);
+		
+		if(result>0) {
+			sqlSession.commit();
+		}
+		sqlSession.close();
+		return result;
+
+	}
+
 }

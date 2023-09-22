@@ -26,4 +26,7 @@ public interface BoardService {
 	//검색 게시글 리스트
 	ArrayList<Board> selectSearchList(HashMap<String,String>map, PageInfo pi);
 	
+	//게시글 삭제
+	int deleteList(int boardNo);
+	
 }

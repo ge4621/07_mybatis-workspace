@@ -75,5 +75,12 @@ public class BoardDao {
 				
 		
 	}//검색 게식글 리스트
+	
+	public int deleteList(SqlSession sqlSession,int boardNo) {
+		
+		return sqlSession.update("boardMapper.deleteList", boardNo);
+		
+		
+	}//게시글 삭제
  	
 }
